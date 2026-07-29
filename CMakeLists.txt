@@ -32,7 +32,9 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(entt)
 
 # Добавляем наш главный файл
-add_executable(AMGR_Engine main.cpp)
+add_executable(AMGR_Engine main.cpp
+        Engine.cpp
+        Engine.h)
 
 # 4. Линкуем (связываем) все библиотеки с нашим движком
 target_link_libraries(AMGR_Engine PRIVATE
