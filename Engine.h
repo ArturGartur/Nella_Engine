@@ -80,6 +80,9 @@ private:
     void createCommandPool();
     void createCommandBuffer();
 
+    void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
+    void drawFrame();
+
     VkRenderPass renderPass;
     void createRenderPass();
 
