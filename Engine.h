@@ -8,6 +8,7 @@
 #include <stdexcept>
 #include <optional>
 #include <limits>
+#include <string>
 
 class Engine {
 
@@ -15,6 +16,11 @@ class Engine {
     void run();
 
 private:
+
+    static std::vector<char> readFile(const std::string& filename);
+
+    void createGraphicsPipeline();
+    VkShaderModule createShaderModule(const std::vector<char>& code);
 
     struct QueueFamilyIndices {
         std::optional<uint32_t> graphicsFamily;
@@ -58,6 +64,21 @@ private:
 
     std::vector<VkImageView> swapChainImageViews;
     void createImageViews();
+
+    VkPipelineLayout pipelineLayout;
+    VkPipeline graphicsPipeline;
+
+    VkCommandPool commandPool;
+    VkCommandBuffer commandBuffer;
+
+    VkSemaphore imageAvailableSemaphore;
+    VkSemaphore renderFinishedSemaphore;
+    VkFence inFlightFence;
+
+    void createSyncObjects();
+
+    void createCommandPool();
+    void createCommandBuffer();
 
     VkRenderPass renderPass;
     void createRenderPass();
