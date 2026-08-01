@@ -9,6 +9,18 @@
 #include <optional>
 #include <limits>
 #include <string>
+#include <Window.h>
+#include <memory>
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_vulkan.h"
+#include <glm/glm.hpp>
+
+struct UniformBufferObject {
+    glm::mat4 model;
+    glm::mat4 view;
+    glm::mat4 proj;
+};
 
 class Engine {
 
@@ -17,9 +29,30 @@ class Engine {
 
 private:
 
+    VkDescriptorPool descriptorPool;
+    VkDescriptorSet descriptorSet;
+
+    void createDescriptorPool();
+    void createDescriptorSets();
+    void updateUniformBuffer();
+
+    VkDescriptorPool imguiPool;
+    void initImGui();
+
     static std::vector<char> readFile(const std::string& filename);
 
     void createGraphicsPipeline();
+    void createDescriptorSetLayout();
+
+    VkBuffer uniformBuffer;
+    VkDeviceMemory uniformBufferMemory;
+    void* uniformBufferMapped;
+
+    uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
+    void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory);
+
+    void createUniformBuffers();
+
     VkShaderModule createShaderModule(const std::vector<char>& code);
 
     struct QueueFamilyIndices {
@@ -35,8 +68,6 @@ private:
         std::vector<VkSurfaceFormatKHR> formats;
         std::vector<VkPresentModeKHR> presentModes;
     };
-
-    void initWindow();
     void initVulkan();
     void mainLoop();
     void cleanup();
@@ -53,7 +84,8 @@ private:
     void createLogicalDevice();
     void createSwapChain();
 
-    GLFWwindow* window = nullptr;
+    std::unique_ptr<Window> window;
+
     VkInstance instance;
     VkSurfaceKHR surface;
 
@@ -64,6 +96,8 @@ private:
 
     std::vector<VkImageView> swapChainImageViews;
     void createImageViews();
+
+    VkDescriptorSetLayout descriptorSetLayout;
 
     VkPipelineLayout pipelineLayout;
     VkPipeline graphicsPipeline;
@@ -89,8 +123,6 @@ private:
     std::vector<VkFramebuffer> swapChainFramebuffers;
     void createFramebuffers();
 
-    const uint32_t WIDTH = 1280;
-    const uint32_t HEIGHT = 720;
     const std::vector<const char*> deviceExtensions = {
         VK_KHR_SWAPCHAIN_EXTENSION_NAME
     };
