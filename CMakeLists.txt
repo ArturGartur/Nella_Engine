@@ -26,6 +26,12 @@ FetchContent_MakeAvailable(imgui)
 FetchContent_Declare(imgui_node_editor GIT_REPOSITORY https://github.com/thedmd/imgui-node-editor.git GIT_TAG v0.9.2)
 FetchContent_MakeAvailable(imgui_node_editor)
 
+# Подтягиваем библиотеку JSON
+FetchContent_Declare(json
+        URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
+)
+FetchContent_MakeAvailable(json)
+
 # Vulkan
 find_package(Vulkan REQUIRED)
 

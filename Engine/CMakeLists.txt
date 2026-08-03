@@ -34,4 +34,5 @@ target_include_directories(Engine PUBLIC
 target_link_libraries(Engine PUBLIC
         glfw
         Vulkan::Vulkan
+        nlohmann_json::nlohmann_json
 )

@@ -105,6 +105,11 @@ void Engine::mainLoop() {
 
 void Engine::cleanup() {
 
+    if (nodeEditor) {
+        nodeEditor->Shutdown();
+    }
+
+
     ImGui_ImplVulkan_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
@@ -812,6 +817,7 @@ void Engine::initImGui() {
     ImGui_ImplVulkan_DestroyFontUploadObjects();
 
     nodeEditor = std::make_unique<NodeEditor>();
+    nodeEditor->Initialize();
 }
 
 void Engine::createDescriptorSetLayout() {
