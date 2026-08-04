@@ -31,7 +31,3 @@ Designed with a modular architecture (Engine as a dynamic library, Game as an ex
 
 The project uses CMake to fetch dependencies (like GLFW and EnTT) automatically.
 
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/your-username/AMGR_Engine.git](https://github.com/your-username/AMGR_Engine.git)
-   cd AMGR_Engine
