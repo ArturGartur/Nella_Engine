@@ -1,4 +1,4 @@
-# AMGR Engine
+# Nella Engine
 
 A custom, data-driven 3D game engine built from scratch with C++20 and Vulkan. 
 
