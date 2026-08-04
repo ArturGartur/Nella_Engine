@@ -12,7 +12,7 @@
 #include <cstring>
 
 void Engine::run() {
-    window = std::make_unique<Window>(1280, 720, "AMGR Engine"); // Создаем окно
+    window = std::make_unique<Window>(1280, 720, "Nella Engine");
     initVulkan();
     mainLoop();
     cleanup();
@@ -21,9 +21,9 @@ void Engine::run() {
 void Engine::initVulkan() {
     VkApplicationInfo appInfo{};
     appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-    appInfo.pApplicationName = "AMGR Engine";
+    appInfo.pApplicationName = "Nella Engine";
     appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
-    appInfo.pEngineName = "AMGR Engine";
+    appInfo.pEngineName = "Nella Engine";
     appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
     appInfo.apiVersion = VK_API_VERSION_1_0;
 
@@ -94,7 +94,7 @@ void Engine::mainLoop() {
         double currentTime = glfwGetTime();
         nbFrames++;
         if (currentTime - lastTime >= 1.0) {
-            std::string title = "AMGR Engine - " + std::to_string(nbFrames) + " fps";
+            std::string title = "Nella Engine - " + std::to_string(nbFrames) + " fps";
             window->setWindowTitle(title);
             nbFrames = 0;
             lastTime = currentTime;

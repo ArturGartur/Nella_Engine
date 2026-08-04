@@ -1,0 +1,90 @@
+{
+    "links": [
+        {
+            "id": 6,
+            "in_id": 2,
+            "out_id": 4
+        },
+        {
+            "id": 11,
+            "in_id": 5,
+            "out_id": 8
+        },
+        {
+            "id": 15,
+            "in_id": 9,
+            "out_id": 13
+        },
+        {
+            "id": 19,
+            "in_id": 10,
+            "out_id": 17
+        },
+        {
+            "id": 20,
+            "in_id": 5,
+            "out_id": 5
+        },
+        {
+            "id": 24,
+            "in_id": 5,
+            "out_id": 22
+        }
+    ],
+    "nodes": [
+        {
+            "id": 1,
+            "in_pin": -1,
+            "name": "Start",
+            "out_false_pin": -1,
+            "out_pin": 2,
+            "text": "start",
+            "type": 0
+        },
+        {
+            "id": 3,
+            "in_pin": 4,
+            "name": "Action",
+            "out_false_pin": -1,
+            "out_pin": 5,
+            "text": "run",
+            "type": 1
+        },
+        {
+            "id": 7,
+            "in_pin": 8,
+            "name": "Branch",
+            "out_false_pin": 10,
+            "out_pin": 9,
+            "text": "run2",
+            "type": 2
+        },
+        {
+            "id": 12,
+            "in_pin": 13,
+            "name": "Action",
+            "out_false_pin": -1,
+            "out_pin": 14,
+            "text": "true",
+            "type": 1
+        },
+        {
+            "id": 16,
+            "in_pin": 17,
+            "name": "Action",
+            "out_false_pin": -1,
+            "out_pin": 18,
+            "text": "false",
+            "type": 1
+        },
+        {
+            "id": 21,
+            "in_pin": 22,
+            "name": "Action",
+            "out_false_pin": -1,
+            "out_pin": 23,
+            "text": "GG",
+            "type": 1
+        }
+    ]
+}

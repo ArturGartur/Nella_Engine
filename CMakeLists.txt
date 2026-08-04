@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(AMGR_Engine_Project)
+project(Nella_Engine_Project)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -37,4 +37,4 @@ find_package(Vulkan REQUIRED)
 
 # Подключаем папки движка и игры
 add_subdirectory(Engine)
-add_subdirectory(Nella)
+add_subdirectory(KRIEG)

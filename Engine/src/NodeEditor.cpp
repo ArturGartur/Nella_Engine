@@ -173,11 +173,11 @@ void NodeEditor::draw() {
     ImGui::Begin("Nella Visual Scripting");
 
     if (ImGui::Button("Save Graph")) {
-        Save("nella_graph_save.json");
+        Save("Nella_graph_save.json");
     }
     ImGui::SameLine();
     if (ImGui::Button("Load Graph")) {
-        Load("nella_graph_save.json");
+        Load("Nella_graph_save.json");
     }
     ImGui::SameLine();
     if (ImGui::Button("Run Graph")) {
