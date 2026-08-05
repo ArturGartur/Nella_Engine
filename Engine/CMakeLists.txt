@@ -2,6 +2,9 @@ add_library(Engine STATIC
         src/Engine.cpp
         src/Window.cpp
         src/NodeEditor.cpp
+        include/Components.h
+        src/World.cpp
+        include/World.h
 
         # Исходники ядра ImGui
         ${imgui_SOURCE_DIR}/imgui.cpp

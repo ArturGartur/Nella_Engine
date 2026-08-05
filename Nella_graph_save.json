@@ -1,90 +1,105 @@
 {
     "links": [
         {
-            "id": 6,
-            "in_id": 2,
-            "out_id": 4
-        },
-        {
-            "id": 11,
-            "in_id": 5,
-            "out_id": 8
-        },
-        {
             "id": 15,
-            "in_id": 9,
-            "out_id": 13
-        },
-        {
-            "id": 19,
-            "in_id": 10,
-            "out_id": 17
-        },
-        {
-            "id": 20,
-            "in_id": 5,
-            "out_id": 5
-        },
-        {
-            "id": 24,
-            "in_id": 5,
-            "out_id": 22
+            "in_id": 2,
+            "out_id": 7
         }
     ],
     "nodes": [
         {
             "id": 1,
-            "in_pin": -1,
+            "inputs": [
+                {
+                    "id": 2,
+                    "name": "In",
+                    "type": 0
+                },
+                {
+                    "id": 4,
+                    "name": "Unit Name",
+                    "type": 3,
+                    "val_str": "KV-2"
+                }
+            ],
+            "name": "Spawn Heavy Tank",
+            "outputs": [
+                {
+                    "id": 3,
+                    "name": "Out",
+                    "type": 0
+                },
+                {
+                    "id": 5,
+                    "name": "Entity ID",
+                    "type": 4
+                }
+            ],
+            "type": 1,
+            "x": 129.0,
+            "y": 47.0
+        },
+        {
+            "id": 6,
+            "inputs": [],
             "name": "Start",
-            "out_false_pin": -1,
-            "out_pin": 2,
-            "text": "start",
-            "type": 0
+            "outputs": [
+                {
+                    "id": 7,
+                    "name": "Out",
+                    "type": 0
+                }
+            ],
+            "type": 0,
+            "x": -157.0,
+            "y": 18.0
         },
         {
-            "id": 3,
-            "in_pin": 4,
+            "id": 8,
+            "inputs": [
+                {
+                    "id": 9,
+                    "name": "In",
+                    "type": 0
+                }
+            ],
             "name": "Action",
-            "out_false_pin": -1,
-            "out_pin": 5,
-            "text": "run",
-            "type": 1
+            "outputs": [
+                {
+                    "id": 10,
+                    "name": "Out",
+                    "type": 0
+                }
+            ],
+            "type": 1,
+            "x": 34.0,
+            "y": -39.0
         },
         {
-            "id": 7,
-            "in_pin": 8,
+            "id": 11,
+            "inputs": [
+                {
+                    "id": 12,
+                    "name": "In",
+                    "type": 0
+                }
+            ],
             "name": "Branch",
-            "out_false_pin": 10,
-            "out_pin": 9,
-            "text": "run2",
-            "type": 2
-        },
-        {
-            "id": 12,
-            "in_pin": 13,
-            "name": "Action",
-            "out_false_pin": -1,
-            "out_pin": 14,
-            "text": "true",
-            "type": 1
-        },
-        {
-            "id": 16,
-            "in_pin": 17,
-            "name": "Action",
-            "out_false_pin": -1,
-            "out_pin": 18,
-            "text": "false",
-            "type": 1
-        },
-        {
-            "id": 21,
-            "in_pin": 22,
-            "name": "Action",
-            "out_false_pin": -1,
-            "out_pin": 23,
-            "text": "GG",
-            "type": 1
+            "outputs": [
+                {
+                    "id": 13,
+                    "name": "True",
+                    "type": 0
+                },
+                {
+                    "id": 14,
+                    "name": "False",
+                    "type": 0
+                }
+            ],
+            "type": 2,
+            "x": -36.0,
+            "y": 184.0
         }
     ]
 }

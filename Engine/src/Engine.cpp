@@ -10,6 +10,7 @@
 #include <fstream>
 #include <glm/gtc/matrix_transform.hpp>
 #include <cstring>
+#include "Components.h"
 
 void Engine::run() {
     window = std::make_unique<Window>(1280, 720, "Nella Engine");
@@ -67,10 +68,19 @@ void Engine::initVulkan() {
 
 void Engine::mainLoop() {
     double lastTime = glfwGetTime();
+    double lastFpsTime = lastTime;
     int nbFrames = 0;
+
     while (!window->shouldClose()) {
         window->pollEvents();
 
+        double currentTime = glfwGetTime();
+        float deltaTime = static_cast<float>(currentTime - lastTime);
+        lastTime = currentTime;
+
+        if (m_World) {
+            m_World->Update(deltaTime);
+        }
 
         ImGui_ImplVulkan_NewFrame();
         ImGui_ImplGlfw_NewFrame();
@@ -91,7 +101,6 @@ void Engine::mainLoop() {
             ImGui::RenderPlatformWindowsDefault();
         }
 
-        double currentTime = glfwGetTime();
         nbFrames++;
         if (currentTime - lastTime >= 1.0) {
             std::string title = "Nella Engine - " + std::to_string(nbFrames) + " fps";
@@ -818,6 +827,35 @@ void Engine::initImGui() {
 
     nodeEditor = std::make_unique<NodeEditor>();
     nodeEditor->Initialize();
+
+    m_World = std::make_unique<Nella::World>();
+    Nella::World* worldPtr = m_World.get();
+
+    nodeEditor->RegisterCppNode("Spawn Heavy Tank", [worldPtr](NodeEditor* editor, EditorNode* node) {
+        std::string unitName = "Unknown_Tank";
+
+        for (auto& pin : node->Inputs) {
+            if (pin.Name == "Unit Name" && pin.Type == PinType::String) {
+                if (auto* strVal = std::get_if<std::string>(&pin.Value)) {
+                    if (!strVal->empty()) {
+                        unitName = *strVal;
+                    }
+                }
+            }
+        }
+
+        entt::entity newEntity = worldPtr->CreateEntity(unitName);
+
+        auto& stats = worldPtr->GetRegistry().emplace<Nella::UnitStatsComponent>(newEntity);
+        stats.ArmorThickness = 120;
+        stats.MaxHealth = 1500;
+        stats.Health = 1000;
+
+
+        uint32_t entityID = static_cast<uint32_t>(newEntity);
+        std::cout << "[Nella Engine] Spawned ECS Entity [" << entityID << "] Tag: " << unitName << std::endl;
+        editor->AddLog("Action: Spawned ECS Entity '" + unitName + "' (ID: " + std::to_string(entityID) + ")");
+    });
 }
 
 void Engine::createDescriptorSetLayout() {

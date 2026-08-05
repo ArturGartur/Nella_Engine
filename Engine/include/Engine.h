@@ -17,6 +17,7 @@
 #include <glm/glm.hpp>
 #include <array>
 #include "NodeEditor.h"
+#include "World.h"
 
 struct UniformBufferObject {
     glm::mat4 model;
@@ -59,6 +60,8 @@ class Engine {
     void run();
 
 private:
+
+    std::unique_ptr<Nella::World> m_World;
 
     const std::vector<Vertex> vertices = {
         {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
